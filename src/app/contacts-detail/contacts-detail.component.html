@@ -1,3 +1,23 @@
-<p>
-  contacts-detail works!
-</p>
+<div class="button-row">
+  <a mat-fab color="primary" [routerLink]="['/contacts']"><mat-icon>list</mat-icon></a>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><h2>{{contact.name}}</h2></mat-card-title>
+    <mat-card-subtitle>{{contact.phone}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>Name:</dt>
+      <dd>{{contact.name}}</dd>
+      <dt>Email:</dt>
+      <dd>{{contact.email}}</dd>
+      <dt>Phone:</dt>
+      <dd>{{contact.phone}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-fab color="primary" [routerLink]="['/contact-edit', contact.key]"><mat-icon>edit</mat-icon></a>
+    <a mat-fab color="warn" (click)="deleteContact(contact.key)"><mat-icon>delete</mat-icon></a>
+  </mat-card-actions>
+</mat-card>
