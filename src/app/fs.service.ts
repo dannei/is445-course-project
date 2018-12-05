@@ -18,10 +18,10 @@ export class FsService {
         querySnapshot.forEach((doc) => {
           let data = doc.data();
           contacts.push({
-            key: doc.id,
-            title: data.title,
-            description: data.description,
-            author: data.author
+            listNum: data.listNum,
+            name: data.name,
+            email: data.email,
+            phone: data.phone
           });
         });
         observer.next(contacts);
@@ -34,10 +34,10 @@ export class FsService {
       this.ref.doc(id).get().then((doc) => {
         let data = doc.data();
         observer.next({
-          key: doc.id,
-          title: data.title,
-          description: data.description,
-          author: data.author
+          listNum: data.listNum,
+          name: data.name,
+          email: data.email,
+          phone: data.phone
         });
       });
     });
