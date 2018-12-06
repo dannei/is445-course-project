@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     data: { title: 'Contacts List' }
   },
   {
-    path: 'contacts-details/:id',
+    path: 'contacts-details/:listNum',
     component: ContactsDetailComponent,
     data: { title: 'Contacts Details' }
   },
@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     data: { title: 'Create contacts' }
   },
   {
-    path: 'contacts-edit/:id',
+    path: 'contacts-edit/:listNum',
     component: ContactsEditComponent,
     data: { title: 'Edit contacts' }
   },

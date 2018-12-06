@@ -18,7 +18,7 @@ export class FsService {
         querySnapshot.forEach((doc) => {
           let data = doc.data();
           contacts.push({
-            listNum: data.listNum,
+            key: data.listNum,
             name: data.name,
             email: data.email,
             phone: data.phone
@@ -29,12 +29,12 @@ export class FsService {
     });
   }
   
-  getContact(id: string): Observable<any> {
+  getContact(listNum: string): Observable<any> {
     return new Observable((observer) => {
-      this.ref.doc(id).get().then((doc) => {
+      this.ref.doc(listNum).get().then((doc) => {
         let data = doc.data();
         observer.next({
-          listNum: data.listNum,
+          key: data.listNum,
           name: data.name,
           email: data.email,
           phone: data.phone
@@ -47,23 +47,23 @@ export class FsService {
     return new Observable((observer) => {
       this.ref.add(data).then((doc) => {
         observer.next({
-          key: doc.id,
+          key: data.listNum,
         });
       });
     });
   }
   
-  updateContacts(id: string, data): Observable<any> {
+  updateContacts(listNum: string, data): Observable<any> {
     return new Observable((observer) => {
-      this.ref.doc(id).set(data).then(() => {
+      this.ref.doc(listNum).set(data).then(() => {
         observer.next();
       });
     });
   }
   
-  deleteContacts(id: string): Observable<{}> {
+  deleteContacts(listNum: string): Observable<{}> {
     return new Observable((observer) => {
-      this.ref.doc(id).delete().then(() => {
+      this.ref.doc(listNum).delete().then(() => {
         observer.next();
       });
     });
