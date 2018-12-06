@@ -1,3 +1,32 @@
-<p>
-  contacts-create works!
-</p>
+<div class="button-row">
+  <a mat-fab color="primary" [routerLink]="['/contacts']"><mat-icon>list</mat-icon></a>
+</div>
+<form [formGroup]="contactsForm" (ngSubmit)="onFormSubmit(contactsForm.value)">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name" formControlName="name"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!contactsForm.get('title').valid && contactsForm.get('title').touched">Please enter contact name</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Email" formControlName="email"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!contactsForm.get('description').valid && contactsForm.get('description').touched">Please enter contact email</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Phone" formControlName="phone"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!contactsForm.get('author').valid && contactsForm.get('author').touched">Please enter contact phone number</span>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button type="submit" [disabled]="!contactsForm.valid" mat-fab color="primary"><mat-icon>save</mat-icon></button>
+  </div>
+</form>

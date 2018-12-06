@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FsService } from '../fs.service';
 
+import { ActivatedRoute, Router } from '@angular/router';
+import { FsService } from '../fs.service';
+
 @Component({
   selector: 'app-contacts-detail',
   templateUrl: './contacts-detail.component.html',
